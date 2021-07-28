@@ -1,4 +1,5 @@
-﻿using BackendChallengeAlura.Models;
+﻿using BackendChallengeAlura.Data;
+using BackendChallengeAlura.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -10,25 +11,31 @@ namespace BackendChallengeAlura.Controllers
     [Route("[controller]")]
     public class VideoController : ControllerBase
     {
-        private static IList<Video> videos = new List<Video>();
+        private VideoContext _context;
+
+        public VideoController(VideoContext context)
+        {
+            _context = context;
+        }
         
         [HttpPost]
         public IActionResult AddVideo([FromBody] Video video)
         {
-            videos.Add(video);
+            _context.Videos.Add(video);
+            _context.SaveChanges();
             return CreatedAtAction(nameof(GetVideo), new { id = video.Id }, video);
         }
 
         [HttpGet]
-        public IActionResult GetVideo()
+        public IEnumerable<Video> GetVideo()
         {
-            return Ok(videos);
+            return _context.Videos;
         }
 
         [HttpGet("{id}")]
         public IActionResult GetVideo(int id)
         {
-            var video = videos.FirstOrDefault(video => video.Id == id);
+            var video = _context.Videos.FirstOrDefault(video => video.Id == id);
             return Ok(video);
         }
 

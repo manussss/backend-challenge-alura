@@ -18,6 +18,12 @@ namespace BackendChallengeAlura.Controllers
             Console.WriteLine($"O video recebido é: {video.Titulo}");
         }
 
+        [HttpGet]
+        public ICollection<Video> GetVideo()
+        {
+            return videos;
+        }
+
 
     }
 }

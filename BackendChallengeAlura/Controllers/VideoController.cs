@@ -39,6 +39,19 @@ namespace BackendChallengeAlura.Controllers
             return Ok(video);
         }
 
+        [HttpPut("{id}")]
+        public IActionResult UpdateVideo(int id, [FromBody] Video newVideo)
+        {
+            var video = _context.Videos.FirstOrDefault(video => video.Id == id);
+            if(video == null)
+                return NotFound();
+
+            video.Titulo = newVideo.Titulo;
+            video.Descricao = newVideo.Descricao;
+            video.Url = newVideo.Url;
+            _context.SaveChanges();
+            return NoContent();
+        }
 
     }
 }

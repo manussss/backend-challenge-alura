@@ -13,22 +13,23 @@ namespace BackendChallengeAlura.Controllers
         private static IList<Video> videos = new List<Video>();
         
         [HttpPost]
-        public void AddVideo([FromBody] Video video)
+        public IActionResult AddVideo([FromBody] Video video)
         {
             videos.Add(video);
+            return CreatedAtAction(nameof(GetVideo), new { id = video.Id }, video);
         }
 
         [HttpGet]
-        public ICollection<Video> GetVideo()
+        public IActionResult GetVideo()
         {
-            return videos;
+            return Ok(videos);
         }
 
         [HttpGet("{id}")]
-        public Video GetVideo(int id)
+        public IActionResult GetVideo(int id)
         {
             var video = videos.FirstOrDefault(video => video.Id == id);
-            return video;
+            return Ok(video);
         }
 
 

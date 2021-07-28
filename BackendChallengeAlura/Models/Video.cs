@@ -1,15 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace BackendChallengeAlura.Models
 {
-    public class Livro
+    public class Video
     {
         public int Id { get; set; }
+
+        [Required(ErrorMessage = "O campo títutlo é obrigatório")]
         public string Titulo { get; set; }
+        
+        [Required(ErrorMessage = "O campo descrição é obrigatório")]
         public string Descricao { get; set; }
+        
+        [Required(ErrorMessage = "A URL é obrigatória")]
         public string Url { get; set; }
     }
 }

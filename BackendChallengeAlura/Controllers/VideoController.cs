@@ -53,5 +53,17 @@ namespace BackendChallengeAlura.Controllers
             return NoContent();
         }
 
+        [HttpDelete("{id}")]
+        public IActionResult DeleteVideo(int id)
+        {
+            var video = _context.Videos.FirstOrDefault(video => video.Id == id);
+            if (video == null)
+                return NotFound();
+
+            _context.Remove(video);
+            _context.SaveChanges();
+            return NoContent();
+        }
+
     }
 }

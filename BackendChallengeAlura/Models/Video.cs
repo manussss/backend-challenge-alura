@@ -5,6 +5,8 @@ namespace BackendChallengeAlura.Models
 {
     public class Video
     {
+        [Key]
+        [Required]
         public int Id { get; set; }
 
         [Required(ErrorMessage = "O campo títutlo é obrigatório")]

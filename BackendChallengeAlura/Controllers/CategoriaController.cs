@@ -19,7 +19,7 @@ namespace BackendChallengeAlura.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddCategoria(Categoria categoria)
+        public IActionResult AddCategoria([FromBody] Categoria categoria)
         {
             _context.Categorias.Add(categoria);
             _context.SaveChanges();
@@ -37,6 +37,31 @@ namespace BackendChallengeAlura.Controllers
         {
             var categoria = _context.Categorias.FirstOrDefault(categoria => categoria.Id == id);
             return Ok(categoria);
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult UpdateCategoria(int id, [FromBody] Categoria newCategoria)
+        {
+            var categoria = _context.Categorias.FirstOrDefault(categoria => categoria.Id == id);
+            if (categoria == null)
+                return NotFound();
+
+            categoria.Titulo = newCategoria.Titulo;
+            categoria.Cor = newCategoria.Cor;
+            _context.SaveChanges();
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteCategoria(int id)
+        {
+            var categoria = _context.Categorias.FirstOrDefault(categoria => categoria.Id == id);
+            if (categoria == null)
+                return NotFound();
+
+            _context.Remove(categoria);
+            _context.SaveChanges();
+            return NoContent();
         }
     }
 }

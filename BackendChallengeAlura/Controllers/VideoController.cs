@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace BackendChallengeAlura.Controllers
 {
@@ -15,13 +16,19 @@ namespace BackendChallengeAlura.Controllers
         public void AddVideo([FromBody] Video video)
         {
             videos.Add(video);
-            Console.WriteLine($"O video recebido é: {video.Titulo}");
         }
 
         [HttpGet]
         public ICollection<Video> GetVideo()
         {
             return videos;
+        }
+
+        [HttpGet("{id}")]
+        public Video GetVideo(int id)
+        {
+            var video = videos.FirstOrDefault(video => video.Id == id);
+            return video;
         }
 
 

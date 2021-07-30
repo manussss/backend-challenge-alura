@@ -9,6 +9,8 @@ namespace BackendChallengeAlura.Models
         [Required]
         public int Id { get; set; }
 
+        //public int CategoriaId { get; set; }
+
         [Required(ErrorMessage = "O campo títutlo é obrigatório")]
         public string Titulo { get; set; }
         

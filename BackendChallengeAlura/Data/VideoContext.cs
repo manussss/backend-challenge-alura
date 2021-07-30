@@ -12,5 +12,10 @@ namespace BackendChallengeAlura.Data
         {
 
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            
+        }
     }
 }

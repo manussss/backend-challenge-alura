@@ -1,5 +1,6 @@
 ﻿using BackendChallengeAlura.Data;
 using BackendChallengeAlura.Models;
+using BackendChallengeAlura.Services;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -11,57 +12,48 @@ namespace BackendChallengeAlura.Controllers
     [Route("[controller]")]
     public class VideoController : ControllerBase
     {
-        private VideoContext _context;
+        private readonly IVideoRepository _videoRepository;
 
-        public VideoController(VideoContext context)
+        public VideoController(IVideoRepository videoRepository)
         {
-            _context = context;
+            _videoRepository = videoRepository;
         }
         
         [HttpPost]
         public IActionResult AddVideo([FromBody] Video video)
         {
-            _context.Videos.Add(video);
-            _context.SaveChanges();
+            _videoRepository.AddVideo(video);
             return CreatedAtAction(nameof(GetVideo), new { id = video.Id }, video);
         }
 
         [HttpGet]
         public IEnumerable<Video> GetVideo()
         {
-            return _context.Videos;
+            return _videoRepository.GetVideo();
         }
 
         [HttpGet("{id}")]
         public IActionResult GetVideo(int id)
         {
-            var video = _context.Videos.FirstOrDefault(video => video.Id == id);
+            var video = _videoRepository.GetVideo(id);
             return Ok(video);
         }
 
         [HttpPut("{id}")]
         public IActionResult UpdateVideo(int id, [FromBody] Video newVideo)
         {
-            var video = _context.Videos.FirstOrDefault(video => video.Id == id);
-            if(video == null)
+            var isUpdated = _videoRepository.UpdateVideo(id, newVideo);
+            if(isUpdated == false)
                 return NotFound();
-
-            video.Titulo = newVideo.Titulo;
-            video.Descricao = newVideo.Descricao;
-            video.Url = newVideo.Url;
-            _context.SaveChanges();
             return NoContent();
         }
 
         [HttpDelete("{id}")]
         public IActionResult DeleteVideo(int id)
         {
-            var video = _context.Videos.FirstOrDefault(video => video.Id == id);
-            if (video == null)
+            var isDeleted = _videoRepository.DeleteVideo(id);
+            if (isDeleted == false)
                 return NotFound();
-
-            _context.Remove(video);
-            _context.SaveChanges();
             return NoContent();
         }
 

@@ -1,4 +1,5 @@
 using BackendChallengeAlura.Data;
+using BackendChallengeAlura.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -23,6 +24,7 @@ namespace BackendChallengeAlura
         {
 
             services.AddControllers();
+            services.AddScoped<IVideoRepository, VideoRepository>();
             services.AddDbContext<VideoContext>(options => options
                 .UseMySQL(Configuration.GetConnectionString("VideoConnection")));
             services.AddSwaggerGen(c =>

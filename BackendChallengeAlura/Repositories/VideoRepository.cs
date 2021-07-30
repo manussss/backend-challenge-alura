@@ -25,13 +25,12 @@ namespace BackendChallengeAlura.Services
         public bool DeleteVideo(int id)
         {
             var video = _context.Videos.FirstOrDefault(video => video.Id == id);
-            if(video != null)
-            {
-                _context.Remove(video);
-                _context.SaveChanges();
-                return true;
-            }
-            return false;
+            if(video == null)
+                return false;
+
+            _context.Remove(video);
+            _context.SaveChanges();
+            return true;
         }
 
         public IEnumerable<Video> GetVideo()
@@ -48,15 +47,14 @@ namespace BackendChallengeAlura.Services
         public bool UpdateVideo(int id, Video newVideo)
         {
             var video = _context.Videos.FirstOrDefault(video => video.Id == id);
-            if(video != null)
-            { 
-                video.Titulo = newVideo.Titulo;
-                video.Descricao = newVideo.Descricao;
-                video.Url = newVideo.Url;
-                _context.SaveChanges();
-                return true;
-            }
-            return false;
+            if(video == null)
+                return false;
+
+            video.Titulo = newVideo.Titulo;
+            video.Descricao = newVideo.Descricao;
+            video.Url = newVideo.Url;
+            _context.SaveChanges();
+            return true;
         }
     }
 }

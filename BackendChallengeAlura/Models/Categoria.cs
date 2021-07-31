@@ -17,5 +17,6 @@ namespace BackendChallengeAlura.Models
 
         [Required(ErrorMessage = "O campo cor é obrigatório")]
         public string Cor { get; set; }
+        public IEnumerable<Video> Videos { get; set; }
     }
 }

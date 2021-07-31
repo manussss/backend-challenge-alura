@@ -15,7 +15,15 @@ namespace BackendChallengeAlura.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            
+            modelBuilder
+                .Entity<Video>()
+                .HasOne(v => v.Categoria)
+                .WithMany(c => c.Videos);
+
+            modelBuilder
+                .Entity<Categoria>()
+                .HasMany(c => c.Videos)
+                .WithOne(v => v.Categoria);
         }
     }
 }

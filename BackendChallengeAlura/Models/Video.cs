@@ -9,7 +9,6 @@ namespace BackendChallengeAlura.Models
         [Required]
         public int Id { get; set; }
 
-        //[Required(ErrorMessage = "O campo categoria é obrigatório")]
         public Categoria Categoria { get; set; }
 
         [Required(ErrorMessage = "O campo categoria é obrigatório")]

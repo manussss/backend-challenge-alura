@@ -57,5 +57,16 @@ namespace BackendChallengeAlura.Controllers
             return NoContent();
         }
 
+        [HttpGet]
+        [Route("{id}/categoria")]
+        public IActionResult GetVideosByCategoria(int id)
+        {
+            var videos = _videoRepository
+                .GetVideo()
+                .Where(v => v.CategoriaId == id);
+            if (videos != null)
+                return Ok(videos);
+            return NotFound();
+        }
     }
 }

@@ -64,6 +64,7 @@ namespace BackendChallengeAlura.Controllers
             var videos = _videoRepository
                 .GetVideo()
                 .Where(v => v.CategoriaId == id);
+
             if (videos != null)
                 return Ok(videos);
             return NotFound();

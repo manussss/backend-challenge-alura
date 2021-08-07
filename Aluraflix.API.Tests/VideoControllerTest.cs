@@ -1,7 +1,6 @@
 using BackendChallengeAlura.Controllers;
 using BackendChallengeAlura.Models;
 using BackendChallengeAlura.Services;
-using Microsoft.AspNetCore.Mvc;
 using Moq;
 using System.Collections.Generic;
 using Xunit;

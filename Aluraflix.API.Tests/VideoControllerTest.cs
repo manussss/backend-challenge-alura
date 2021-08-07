@@ -23,7 +23,7 @@ namespace Aluraflix.API.Tests
         }
 
         [Fact]
-        public void GetVideo()
+        public void GetVideoById()
         {
             var repo = new Mock<IVideoRepository>();
             repo.Setup(r => r.GetVideo(It.IsAny<int>()));
@@ -35,7 +35,7 @@ namespace Aluraflix.API.Tests
         }
 
         [Fact]
-        public void GetVideoById()
+        public void GetVideo()
         {
             var repo = new Mock<IVideoRepository>();
             repo.Setup(r => r.GetVideo()).Returns(new List<Video>());

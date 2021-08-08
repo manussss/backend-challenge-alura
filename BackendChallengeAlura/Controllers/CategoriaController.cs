@@ -11,7 +11,7 @@ namespace BackendChallengeAlura.Controllers
     [Route("[controller]")]
     public class CategoriaController : ControllerBase
     {
-        private ICategoriaRepository _categoriaRepository;
+        private readonly ICategoriaRepository _categoriaRepository;
         private readonly ILogger<CategoriaController> logger;
 
         public CategoriaController(ICategoriaRepository categoriaRepository, ILogger<CategoriaController> logger)

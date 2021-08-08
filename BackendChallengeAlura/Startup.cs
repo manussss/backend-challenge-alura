@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 
 namespace BackendChallengeAlura
@@ -23,7 +24,6 @@ namespace BackendChallengeAlura
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
             services.AddControllers();
             services.AddScoped<IVideoRepository, VideoRepository>();
             services.AddScoped<ICategoriaRepository, CategoriaRepository>();
@@ -33,11 +33,17 @@ namespace BackendChallengeAlura
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "BackendChallengeAlura", Version = "v1" });
             });
+            services.AddLogging(config =>
+            {
+                config.AddDebug();
+                config.AddConsole();
+                //etc
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-        {
+        {            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

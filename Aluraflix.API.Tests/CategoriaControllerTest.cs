@@ -1,6 +1,7 @@
 ﻿using BackendChallengeAlura.Controllers;
 using BackendChallengeAlura.Models;
 using BackendChallengeAlura.Repositories;
+using Microsoft.Extensions.Logging;
 using Moq;
 using System.Collections.Generic;
 using Xunit;
@@ -9,13 +10,16 @@ namespace Aluraflix.API.Tests
 {
     public class CategoriaControllerTest
     {
+
+        Mock<ILogger<CategoriaController>> logger = new Mock<ILogger<CategoriaController>>();
+
         [Fact]
         public void AddCategoria()
         {
             var repo = new Mock<ICategoriaRepository>();
             repo.Setup(r => r.AddCategoria(It.IsAny<Categoria>()));
 
-            var categoriaController = new CategoriaController(repo.Object);
+            var categoriaController = new CategoriaController(repo.Object, logger.Object);
             categoriaController.AddCategoria(new Categoria());
 
             repo.Verify(r => r.AddCategoria(It.IsAny<Categoria>()), Times.Once);
@@ -27,7 +31,7 @@ namespace Aluraflix.API.Tests
             var repo = new Mock<ICategoriaRepository>();
             repo.Setup(r => r.GetCategoria()).Returns(new List<Categoria>());
 
-            var categoriaController = new CategoriaController(repo.Object);
+            var categoriaController = new CategoriaController(repo.Object, logger.Object);
             categoriaController.GetCategoria();
 
             repo.Verify(r => r.GetCategoria(), Times.Once);
@@ -39,7 +43,7 @@ namespace Aluraflix.API.Tests
             var repo = new Mock<ICategoriaRepository>();
             repo.Setup(r => r.GetCategoria(It.IsAny<int>()));
 
-            var categoriaController = new CategoriaController(repo.Object);
+            var categoriaController = new CategoriaController(repo.Object, logger.Object);
             categoriaController.GetCategoria(1);
 
             repo.Verify(r => r.GetCategoria(It.IsAny<int>()), Times.Once);
@@ -51,7 +55,7 @@ namespace Aluraflix.API.Tests
             var repo = new Mock<ICategoriaRepository>();
             repo.Setup(r => r.UpdateCategoria(It.IsAny<int>(), It.IsAny<Categoria>()));
 
-            var categoriaController = new CategoriaController(repo.Object);
+            var categoriaController = new CategoriaController(repo.Object, logger.Object);
             categoriaController.UpdateCategoria(1, new Categoria());
 
             repo.Verify(r => r.UpdateCategoria(It.IsAny<int>(), It.IsAny<Categoria>()), Times.Once);
@@ -63,7 +67,7 @@ namespace Aluraflix.API.Tests
             var repo = new Mock<ICategoriaRepository>();
             repo.Setup(r => r.DeleteCategoria(It.IsAny<int>()));
 
-            var categoriaController = new CategoriaController(repo.Object);
+            var categoriaController = new CategoriaController(repo.Object, logger.Object);
             categoriaController.DeleteCategoria(1);
 
             repo.Verify(r => r.DeleteCategoria(It.IsAny<int>()), Times.Once);

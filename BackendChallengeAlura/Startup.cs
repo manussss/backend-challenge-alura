@@ -37,7 +37,6 @@ namespace BackendChallengeAlura
             {
                 config.AddDebug();
                 config.AddConsole();
-                //etc
             });
         }
 

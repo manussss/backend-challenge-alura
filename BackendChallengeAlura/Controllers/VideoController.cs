@@ -1,5 +1,4 @@
-﻿using BackendChallengeAlura.Data;
-using BackendChallengeAlura.Models;
+﻿using BackendChallengeAlura.Models;
 using BackendChallengeAlura.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;

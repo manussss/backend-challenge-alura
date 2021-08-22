@@ -20,7 +20,12 @@ namespace BackendChallengeAlura.Controllers
             _videoRepository = videoRepository;
             this.logger = logger;
         }
-        
+
+        /// <summary>
+        /// Adicionar um vídeo.
+        /// </summary>
+        /// <param name="video">Vídeo que será adicionado.</param>
+        /// <response code="201">Um novo vídeo foi adicionado com sucesso.</response>
         [HttpPost]
         public IActionResult AddVideo([FromBody] Video video)
         {
@@ -29,6 +34,10 @@ namespace BackendChallengeAlura.Controllers
             return CreatedAtAction(nameof(GetVideo), new { id = video.Id }, video);
         }
 
+        /// <summary>
+        /// Obter todos os vídeos.
+        /// </summary>
+        /// <response code="200">A lista de vídeos foi obtida com sucesso.</response>
         [HttpGet]
         public IEnumerable<Video> GetVideo()
         {
@@ -36,6 +45,11 @@ namespace BackendChallengeAlura.Controllers
             return _videoRepository.GetVideo();
         }
 
+        /// <summary>
+        /// Obter vídeo por id.
+        /// </summary>
+        /// <param name="id">ID do vídeo.</param>
+        /// <response code="200">O vídeo foi obtido com sucesso.</response>
         [HttpGet("{id}")]
         public IActionResult GetVideo(int id)
         {
@@ -44,6 +58,13 @@ namespace BackendChallengeAlura.Controllers
             return Ok(video);
         }
 
+        /// <summary>
+        /// Alterar um vídeo.
+        /// </summary>
+        /// <param name="id">ID do vídeo.</param>
+        /// <param name="newVideo">Novo vídeo.</param>
+        /// <response code="204">O vídeo foi alterado com sucesso.</response>
+        /// <response code="404">Não foi encontrado vídeo com este ID.</response>
         [HttpPut("{id}")]
         public IActionResult UpdateVideo(int id, [FromBody] Video newVideo)
         {
@@ -57,6 +78,12 @@ namespace BackendChallengeAlura.Controllers
             return NoContent();
         }
 
+        /// <summary>
+        /// Deletar um vídeo.
+        /// </summary>
+        /// <param name="id">ID do vídeo.</param>
+        /// <response code="204">O vídeo foi deletado com sucesso.</response>
+        /// <response code="404">Não foi encontrado vídeo com este ID.</response>
         [HttpDelete("{id}")]
         public IActionResult DeleteVideo(int id)
         {
@@ -70,6 +97,12 @@ namespace BackendChallengeAlura.Controllers
             return NoContent();
         }
 
+        /// <summary>
+        /// Obter vídeo por categoria.
+        /// </summary>
+        /// <param name="id">ID da categoria.</param>
+        /// <response code="200">A lista de vídeos por categoria foi obtida com sucesso.</response>
+        /// <response code="404">Não foram encontrados vídeos com esta categoria.</response>
         [HttpGet]
         [Route("{id}/categoria")]
         public IActionResult GetVideosByCategoria(int id)

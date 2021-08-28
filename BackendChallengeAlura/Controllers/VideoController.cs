@@ -1,4 +1,5 @@
-﻿using BackendChallengeAlura.Models;
+﻿using Aluraflix.API.Validations.Interfaces;
+using BackendChallengeAlura.Models;
 using BackendChallengeAlura.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -14,11 +15,13 @@ namespace BackendChallengeAlura.Controllers
     {
         private readonly IVideoRepository _videoRepository;
         private readonly ILogger<VideoController> logger;
+        private readonly IVideoValidation _videoValidation;
 
-        public VideoController(IVideoRepository videoRepository, ILogger<VideoController> logger)
+        public VideoController(IVideoRepository videoRepository, ILogger<VideoController> logger, IVideoValidation videoValidation)
         {
             _videoRepository = videoRepository;
             this.logger = logger;
+            _videoValidation = videoValidation;
         }
 
         /// <summary>
@@ -29,6 +32,8 @@ namespace BackendChallengeAlura.Controllers
         [HttpPost]
         public IActionResult AddVideo([FromBody] Video video)
         {
+            if (!_videoValidation.DoesVideoHaveCategoriaID(video))
+                video.CategoriaId = 1;
             _videoRepository.AddVideo(video);
             logger.LogInformation($"Adding Video object, DT: {DateTime.Now}");
             return CreatedAtAction(nameof(GetVideo), new { id = video.Id }, video);

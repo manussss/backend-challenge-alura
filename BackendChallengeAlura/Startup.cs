@@ -1,3 +1,5 @@
+using Aluraflix.API.Validations;
+using Aluraflix.API.Validations.Interfaces;
 using BackendChallengeAlura.Data;
 using BackendChallengeAlura.Repositories;
 using BackendChallengeAlura.Services;
@@ -30,6 +32,7 @@ namespace BackendChallengeAlura
             services.AddControllers();
             services.AddScoped<IVideoRepository, VideoRepository>();
             services.AddScoped<ICategoriaRepository, CategoriaRepository>();
+            services.AddScoped<IVideoValidation, VideoValidation>();
             services.AddDbContext<VideoContext>(options => options
                 .UseMySQL(Configuration.GetConnectionString("VideoConnection")));
             services.AddSwaggerGen(c =>

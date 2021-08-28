@@ -1,3 +1,4 @@
+using Aluraflix.WebApp.HttpClients;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -24,6 +25,10 @@ namespace Aluraflix.WebApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddHttpClient<VideoApiClient>(client =>
+            {
+                client.BaseAddress = new System.Uri("http://localhost:5000");
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

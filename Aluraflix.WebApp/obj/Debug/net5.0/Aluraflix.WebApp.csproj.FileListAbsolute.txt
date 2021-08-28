@@ -1,8 +1,0 @@
-C:\Users\opc\Documents\workspace\personal\alura-challenge\Challenge\BackendChallengeAlura\Aluraflix.WebApp\obj\Debug\net5.0\Aluraflix.WebApp.csproj.AssemblyReference.cache
-C:\Users\opc\Documents\workspace\personal\alura-challenge\Challenge\BackendChallengeAlura\Aluraflix.WebApp\obj\Debug\net5.0\Aluraflix.WebApp.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\opc\Documents\workspace\personal\alura-challenge\Challenge\BackendChallengeAlura\Aluraflix.WebApp\obj\Debug\net5.0\Aluraflix.WebApp.AssemblyInfoInputs.cache
-C:\Users\opc\Documents\workspace\personal\alura-challenge\Challenge\BackendChallengeAlura\Aluraflix.WebApp\obj\Debug\net5.0\Aluraflix.WebApp.AssemblyInfo.cs
-C:\Users\opc\Documents\workspace\personal\alura-challenge\Challenge\BackendChallengeAlura\Aluraflix.WebApp\obj\Debug\net5.0\Aluraflix.WebApp.csproj.CoreCompileInputs.cache
-C:\Users\opc\Documents\workspace\personal\alura-challenge\Challenge\BackendChallengeAlura\Aluraflix.WebApp\obj\Debug\net5.0\Aluraflix.WebApp.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\opc\Documents\workspace\personal\alura-challenge\Challenge\BackendChallengeAlura\Aluraflix.WebApp\obj\Debug\net5.0\Aluraflix.WebApp.RazorAssemblyInfo.cache
-C:\Users\opc\Documents\workspace\personal\alura-challenge\Challenge\BackendChallengeAlura\Aluraflix.WebApp\obj\Debug\net5.0\Aluraflix.WebApp.RazorAssemblyInfo.cs

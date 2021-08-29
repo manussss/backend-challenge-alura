@@ -20,7 +20,8 @@ namespace Aluraflix.WebApp.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            return RedirectToAction("GetVideos", "Videos");
+            //return View();
         }
 
         public IActionResult Privacy()

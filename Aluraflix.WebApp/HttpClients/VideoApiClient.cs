@@ -26,5 +26,17 @@ namespace Aluraflix.WebApp.HttpClients
             }
             return videos;
         }
+
+        public async Task<Video> GetVideoAsync(int id)
+        {
+            Video video = new Video();
+            var response = await _httpClient.GetAsync($"video/{id}");
+            if (response.IsSuccessStatusCode)
+            {
+                var result = response.Content.ReadAsStringAsync().Result;
+                video = JsonConvert.DeserializeObject<Video>(result);
+            }
+            return video;
+        }
     }
 }

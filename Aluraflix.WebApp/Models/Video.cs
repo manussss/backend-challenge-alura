@@ -1,7 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-
-namespace BackendChallengeAlura.Models
+﻿namespace Aluraflix.WebApp.Models
 {
     public class Video
     {

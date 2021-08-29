@@ -1,4 +1,4 @@
-﻿using BackendChallengeAlura.Models;
+﻿using Aluraflix.WebApp.Models;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Net.Http;

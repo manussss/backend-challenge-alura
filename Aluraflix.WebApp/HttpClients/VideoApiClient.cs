@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Net.Http.Json;
 using System.Threading.Tasks;
 
 namespace Aluraflix.WebApp.HttpClients
@@ -37,6 +38,15 @@ namespace Aluraflix.WebApp.HttpClients
                 video = JsonConvert.DeserializeObject<Video>(result);
             }
             return video;
+        }
+
+        public async Task PostVideoAsync(Video video)
+        {
+            var response = await _httpClient.PostAsJsonAsync<Video>($"video", video);
+            if (response.IsSuccessStatusCode)
+            {
+                var result = response.Content.ReadAsStringAsync().Result;
+            }
         }
     }
 }

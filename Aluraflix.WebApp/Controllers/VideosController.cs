@@ -1,4 +1,5 @@
 ﻿using Aluraflix.WebApp.HttpClients;
+using Aluraflix.WebApp.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Aluraflix.WebApp.Controllers
@@ -25,6 +26,14 @@ namespace Aluraflix.WebApp.Controllers
         {
             var video = _api.GetVideoAsync(id);
             return View(video.Result);
+        }
+
+        [Route("video/criar")]
+        public IActionResult PostVideo(Video video)
+        {
+            _api.PostVideoAsync(video);
+            return View(video);
+            //return RedirectToAction("GetVideos", "Videos");
         }
     }
 }

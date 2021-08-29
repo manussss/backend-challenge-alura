@@ -116,3 +116,4 @@ C:\Users\opc\Documents\workspace\personal\alura-challenge\Challenge\BackendChall
 C:\Users\opc\Documents\workspace\personal\alura-challenge\Challenge\BackendChallengeAlura\Aluraflix.WebApp\bin\Debug\net5.0\runtimes\win-arm64\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
 C:\Users\opc\Documents\workspace\personal\alura-challenge\Challenge\BackendChallengeAlura\Aluraflix.WebApp\obj\Debug\net5.0\Razor\Views\Videos\GetVideo.cshtml.g.cs
 C:\Users\opc\Documents\workspace\personal\alura-challenge\Challenge\BackendChallengeAlura\Aluraflix.WebApp\obj\Debug\net5.0\Razor\Views\Videos\GetVideos.cshtml.g.cs
+C:\Users\opc\Documents\workspace\personal\alura-challenge\Challenge\BackendChallengeAlura\Aluraflix.WebApp\obj\Debug\net5.0\Razor\Views\Videos\PostVideo.cshtml.g.cs

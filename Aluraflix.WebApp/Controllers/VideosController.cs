@@ -33,7 +33,14 @@ namespace Aluraflix.WebApp.Controllers
         {
             _api.PostVideoAsync(video);
             return View(video);
-            //return RedirectToAction("GetVideos", "Videos");
+        }
+
+        [Route("deletar/{id}")]
+        public IActionResult DeleteVideo(int id)
+        {
+            var video = _api.GetVideoAsync(id);
+            _api.DeleteVideoAsync(id);
+            return View(video.Result);
         }
     }
 }

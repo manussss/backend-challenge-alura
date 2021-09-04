@@ -48,5 +48,14 @@ namespace Aluraflix.WebApp.HttpClients
                 var result = response.Content.ReadAsStringAsync().Result;
             }
         }
+
+        public async Task DeleteVideoAsync(int id)
+        {
+            var response = await _httpClient.DeleteAsync($"video/{id}");
+            if (response.IsSuccessStatusCode)
+            {
+                var result = response.Content.ReadAsStringAsync().Result;
+            }
+        }
     }
 }
